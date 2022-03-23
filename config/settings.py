@@ -125,6 +125,17 @@ STATICFILES_DIRS = [BASE_DIR/'static',]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = str(BASE_DIR / 'media/')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'ravshanbekmadaminov68@gmail.com'
+EMAIL_HOST_PASSWORD = 'nwcauwnimqobuzig'
+
+# EMAIL_HOST_PASSWORD bu Google akkaunt paroli emas, Google sozlamalaridan mahsus yaratiladi
+# Key - nwcauwnimqobuzig
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 

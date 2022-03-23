@@ -3,6 +3,9 @@ from django.views import View
 from .models import Category, Category2, Tovar
 from base_user.models import Email
 from django.contrib import messages
+from django.core.mail import EmailMessage
+from django.conf import settings
+from django.template.loader import render_to_string
 
 class IndexView(View):
     def get(self, request):
@@ -18,6 +21,15 @@ class IndexView(View):
 
 class HomeView(View):
     def get(self, request):
+        template = render_to_string('email_template.html',{'name':request.user.username})
+        email = EmailMessage(
+            'Welcome to Alistyle!',
+            template,
+            settings.EMAIL_HOST_USER,
+            ['ravshanbekmadaminov68@gmail.com'],
+        )
+        email.fail_silently=False
+        email.send()
         return render(request, 'page-index.html')
     
     def post(self, request):

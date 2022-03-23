@@ -28,6 +28,8 @@ class RegisterView(View):
                 country=request.POST['country'],
             )
             main_user.save()
+            foydalanuvchi = authenticate(request, username=main_user.user, password=main_user.user.password)
+            login(request, foydalanuvchi)
             return redirect('home')
 
 class LoginView(View):
