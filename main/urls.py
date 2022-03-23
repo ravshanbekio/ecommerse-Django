@@ -8,4 +8,5 @@ urlpatterns = [
     path('category/<pk>/',InternalView.as_view(), name='internal'),
     path('category/<pk>/products/',ProductsView.as_view(),name='product'),
     path('category/<pk>/products/<name>/',ProductDetailView.as_view(), name='product-detail'),
+    #path('wishlist/<user>/',WishlistView.as_view(), name='wishlist'),
 ]

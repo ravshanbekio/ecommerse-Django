@@ -41,3 +41,20 @@ class Rate(models.Model):
     def __str__(self):
         return self.rate
 
+class Wishlist(models.Model):
+    name = models.CharField(max_length=100)
+    photo = models.FileField(upload_to='mahsulot/')
+    user = models.ForeignKey(Main_User, blank=True, on_delete=models.SET_NULL, null=True)
+    verify = models.CharField(max_length=30, default="verify")
+    cost = models.IntegerField()
+    more = models.TextField()
+    aksiya = models.PositiveSmallIntegerField(default=0)
+    brand = models.CharField(max_length=80)
+    garant = models.CharField(max_length=50)
+    delivery_time = models.CharField(max_length=50)
+    there = models.BooleanField(default=True)
+    inside_category = models.ForeignKey(Category2, on_delete=models.SET_NULL, null=True, related_name='inside_category_wishlist')
+
+    def __str__(self):
+        return self.name
+

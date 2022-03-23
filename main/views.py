@@ -97,3 +97,8 @@ class ProductDetailView(View):
         email.save()
         messages.success(request, "Obunangiz muvaffaqiyatli qabul qilindi!")
         return redirect('product-detail',pk=internal.id, name=tovar.name)
+
+# class WishlistView(View):
+#     def get(self, request, user):
+
+#         return render(request, 'page-profile-wishlist.html')
