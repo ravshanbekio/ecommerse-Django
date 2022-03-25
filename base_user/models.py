@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from twilio.rest import Client
 
 class Main_User(models.Model):
     name = models.CharField(max_length=210)
@@ -19,6 +20,21 @@ class Main_User(models.Model):
     
     class Meta:
         verbose_name_plural = 'Mijoz'
+
+    def save(self, *args, **kwargs):
+        if self.phone is not None:
+            account_sid = 'AC558fd8ea045a87b2f7730355173ea16b'
+            auth_token = 'fc53045e82b6918cde0f15217a21a05b'
+            client = Client(account_sid, auth_token)
+
+            message = client.messages.create(
+                                        body=f'Hello {self.name}! You are successfully registered in Alistyle! Go https://www.ravshanenergy.uz/',
+                                        from_='+18596961776',
+                                        to='+998903036415'
+                                    )
+
+            print(message.sid)
+        return super().save(*args, **kwargs)
 
 class Address(models.Model):
     country = models.CharField(max_length=100)
