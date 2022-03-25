@@ -29,8 +29,8 @@ class Main_User(models.Model):
 
             message = client.messages.create(
                                         body=f'Hello {self.name}! You are successfully registered in Alistyle! Go https://www.ravshanenergy.uz/',
-                                        from_='+18596961776',
-                                        to='+998903036415'
+                                        from_='#',
+                                        to='#'
                                     )
 
             print(message.sid)
