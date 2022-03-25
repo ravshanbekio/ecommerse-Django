@@ -23,8 +23,8 @@ class Main_User(models.Model):
 
     def save(self, *args, **kwargs):
         if self.phone is not None:
-            account_sid = 'AC558fd8ea045a87b2f7730355173ea16b'
-            auth_token = 'fc53045e82b6918cde0f15217a21a05b'
+            account_sid = '#'
+            auth_token = '#'
             client = Client(account_sid, auth_token)
 
             message = client.messages.create(
