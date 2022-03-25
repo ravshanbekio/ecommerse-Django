@@ -26,7 +26,7 @@ class HomeView(View):
             'Welcome to Alistyle!',
             template,
             settings.EMAIL_HOST_USER,
-            ['ravshanbekmadaminov68@gmail.com'],
+            [request.user.username],
         )
         email.fail_silently=False
         email.send()
