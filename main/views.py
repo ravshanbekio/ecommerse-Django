@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from .models import Category, Category2, Tovar
+from .models import Category, Category2, Shopping, Tovar
 from base_user.models import Email
 from django.contrib import messages
 from django.core.mail import EmailMessage
@@ -21,15 +21,15 @@ class IndexView(View):
 
 class HomeView(View):
     def get(self, request):
-        template = render_to_string('email_template.html',{'name':request.user.username})
-        email = EmailMessage(
-            'Welcome to Alistyle!',
-            template,
-            settings.EMAIL_HOST_USER,
-            [request.user.username],
-        )
-        email.fail_silently=False
-        email.send()
+        # template = render_to_string('email_template.html',{'name':request.user.username})
+        # email = EmailMessage(
+        #     'Welcome to Alistyle!',
+        #     template,
+        #     settings.EMAIL_HOST_USER,
+        #     [request.user.username],
+        # )
+        # email.fail_silently=False
+        # email.send()
         return render(request, 'page-index.html')
     
     def post(self, request):
@@ -98,7 +98,16 @@ class ProductDetailView(View):
         messages.success(request, "Obunangiz muvaffaqiyatli qabul qilindi!")
         return redirect('product-detail',pk=internal.id, name=tovar.name)
 
-# class WishlistView(View):
-#     def get(self, request, user):
+class ShoppingCartView(View):
+    def get(self, request, pk):
+        tovar = Tovar.objects.get(id=pk)
+        new_product = Shopping.objects.create(
+            user=request.user,
+            product=tovar
+        )
+        all = Shopping.objects.filter(id=pk)
+        return render(request,'page-shopping-cart.html',{'all':all})
 
-#         return render(request, 'page-profile-wishlist.html')
+class WishlistView(View):
+    def get(self, request, user):
+        return render(request, 'page-profile-wishlist.html')
