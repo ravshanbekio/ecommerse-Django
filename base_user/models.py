@@ -29,11 +29,10 @@ class Main_User(models.Model):
 
             message = client.messages.create(
                                         body=f'Hello {self.name}! You are successfully registered in Alistyle! Go https://www.ravshanenergy.uz/',
-                                        from_='#',
-                                        to='#'
+                                        from_='',
+                                        to=self.phone
                                     )
 
-            print(message.sid)
         return super().save(*args, **kwargs)
 
 class Address(models.Model):
