@@ -21,19 +21,19 @@ class Main_User(models.Model):
     class Meta:
         verbose_name_plural = 'Mijoz'
 
-    def save(self, *args, **kwargs):
-        if self.phone is not None:
-            account_sid = '#'
-            auth_token = '#'
-            client = Client(account_sid, auth_token)
+    # def save(self, *args, **kwargs):
+    #     if self.phone is not None:
+    #         account_sid = '#'
+    #         auth_token = '#'
+    #         client = Client(account_sid, auth_token)
 
-            message = client.messages.create(
-                                        body=f'Hello {self.name}! You are successfully registered in Alistyle! Go https://www.ravshanenergy.uz/',
-                                        from_='',
-                                        to=self.phone
-                                    )
+    #         message = client.messages.create(
+    #                                     body=f'Hello {self.name}! You are successfully registered in Alistyle! Go https://www.ravshanenergy.uz/',
+    #                                     from_='',
+    #                                     to=self.phone
+    #                                 )
 
-        return super().save(*args, **kwargs)
+    #     return super().save(*args, **kwargs)
 
 class Address(models.Model):
     country = models.CharField(max_length=100)
