@@ -9,14 +9,17 @@ You can also sell your little brand or store products to consumers through this 
 
 # Operating Instructions
 
-This project was developed in python (django). Project colds are absolutely free.
+This project was developed in Python (Django). Project colds are absolutely free.
 Follow the instructions below for local use:
 
-1.Your python version must be higher than 3.10.2!
+Your python version must be higher than 3.10.2!
+```django-package
+pip install django == 4.0.3
+```
 
-2.pip install django == 4.0.3
-
-Then run the project (py manage.py runserver)
+# Admin keywords
+- Username: 'hp'
+- Password: 'madaminov27'
 
 # License
 
