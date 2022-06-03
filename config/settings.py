@@ -37,9 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    #local apps
     'main.apps.MainConfig',
     'book.apps.BookConfig',
     'base_user.apps.BaseUserConfig',
+
+    #external apps
+    'admin_honeypot',
 ]
 
 MIDDLEWARE = [
